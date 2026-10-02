@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini Discovery Day | 参加者限定 プロンプトエディトリアル</title>
+  
+  <!-- Modern Clean Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- High-Impact Editorial Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Fullscreen Particle Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Ambient Cyber Background -->
+  <div class="cyber-bg">
+    <div class="cyber-grid"></div>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="app-container">
+
+    <!-- Playful Navigation -->
+    <header class="top-nav">
+      <div class="nav-brand">
+        <div class="brand-icon-box">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15 9 22 12 15 15 12 22 9 15 2 12 9 9 12 2"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">Gemini Discovery Day</h1>
+          <span style="font-size: 0.88rem; font-weight: 700; color: var(--neon-cyan); display: block; letter-spacing: 0.04em;">by Google AI学生アンバサダー</span>
+        </div>
+        <span class="brand-badge">Supported by Google AI学生アンバサダー</span>
+      </div>
+
+      <div class="nav-actions">
+        <a href="table.html" class="btn-nav-auth" style="text-decoration: none;" title="全50件のプロンプトを表形式で閲覧">
+          <span>📊 データ表で見る</span>
+        </a>
+        <button id="btn-toggle-auth" class="btn-nav-auth" title="合言葉ロックのテスト切り替え">
+          <!-- Populated by JavaScript -->
+        </button>
+      </div>
+    </header>
+
+    <!-- Bold Magazine Breakout Hero -->
+    <section class="hero-breakout">
+      
+      <!-- Street Stickers Cloud -->
+      <div class="sticker-tags-cloud">
+        <span class="sticker-tag tag-pink">✨ Supported by Google AI学生アンバサダー</span>
+        <span class="sticker-tag tag-cyan">⚡ 2026最新Gemini世代対応</span>
+        <span class="sticker-tag tag-yellow">🎓 厳選50選 大学生活ハック</span>
+        <span class="sticker-tag tag-green">🚀 1-Click即時コピー</span>
+        <span class="sticker-tag tag-purple">🎲 運命のプロンプトガチャ</span>
+      </div>
+
+      <!-- Giant Editorial Title -->
+      <h2 class="hero-giant-title">
+        日常の検索から、<br>
+        <span class="grad-accent">最高の共創パートナーへ。</span>
+      </h2>
+
+      <p class="hero-sub-statement">
+        難解な講義ノートの図解化、卒論の反論シミュレーション、就活の逆質問、Gitコンフリクト救命からLINE催促まで。<br>
+        最新の <strong>Gemini 3.8 Flash</strong>、<strong>Gemini 3.1 Pro (Thinking)</strong>、画像生成の <strong>Gemini 3.1 Flash Image</strong> の真価を解き放つ実践プロンプト集。
+      </p>
+
+      <!-- Interactive Gacha Feature -->
+      <div class="gacha-interactive-card">
+        <div class="gacha-info-col">
+          <span class="gacha-dice-icon">🎲</span>
+          <div>
+            <h3 class="gacha-title-h3">今日の運命プロンプトガチャ</h3>
+            <p class="gacha-desc-p">「何から試せばいいかわからない」あなたへ！ボタンを押すと50件の中から今日試すべき1件が飛び出します。</p>
+          </div>
+        </div>
+        <button id="btn-spin-gacha" class="btn-spin-gacha">
+          <span>ガチャを回す！</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Large Touch-Friendly Toolbar -->
+    <section class="playful-toolbar">
+      <div class="toolbar-search-row">
+        <div class="big-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" class="big-search-input" placeholder="キーワード・用途・目的で検索...（例：レポート、就活、Python、プレゼン、LINE）">
+        </div>
+        <div class="toolbar-result-badge">
+          表示中: <strong id="search-count">50</strong> / 50 件
+        </div>
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="category-filter-scroller" id="category-strip">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Bento Grid Showcase -->
+    <main class="bento-grid" id="showcase-grid">
+      <!-- Dynamic Bento Cards Rendered by app.js -->
+    </main>
+
+    <!-- Playful Editorial Footer -->
+    <footer class="playful-footer">
+      <div>
+        <strong style="color: #fff; font-size: 1.25rem; display: block; margin-bottom: 6px; font-weight: 900;">Gemini Discovery Day by Google AI学生アンバサダー</strong>
+        <span style="color: var(--text-secondary); font-size: 1.05rem;">2026.11.25 [Wed] 17:30 - 20:30 @ 大手町 3x3Lab Future</span>
+      </div>
+      <div style="text-align: right;">
+        <p style="color: var(--neon-cyan); font-weight: 800; font-size: 1.05rem; margin-bottom: 4px;">Supported by Google AI学生アンバサダー</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">© 2026 AI映像委員会 / Gemini Discovery Day 実行委員会</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Detail Modal with Live Personalizer -->
+  <div class="modal-overlay" id="prompt-detail-modal">
+    <div class="modal-dialog">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-col">
+          <div class="modal-meta-row">
+            <span class="sticker-tag tag-cyan" id="modal-cat-badge">講義・復習</span>
+            <span class="sticker-tag tag-pink" id="modal-model-badge">Gemini 3.8 Flash</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--text-muted);" id="modal-num">#01</span>
+          </div>
+          <h2 class="modal-giant-h2" id="modal-h2">タイトル</h2>
+          <p class="modal-aim-lead" id="modal-aim-p">ねらい・得られる効果</p>
+        </div>
+        <button class="btn-close-modal" id="btn-close-modal" aria-label="閉じる">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Live Personalizer Panel -->
+        <div class="live-injector-panel" id="live-injector-panel">
+          <div class="injector-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>リアルタイム・パーソナライザー（入力やボタン選択でプロンプトが自動で書き換わります）</span>
+          </div>
+          <div class="injector-fields-container" id="injector-fields-container">
+            <!-- Rendered dynamically by app.js (multi-variable inputs & quick preset chips) -->
+          </div>
+          <p class="injector-tip-text">
+            💡 入力した文字や選択したスタイルが、下のプロンプト本文内のシアンのハイライト枠に即座に反映されます。そのまま1-ClickコピーしてGeminiに貼り付けられます！
+          </p>
+        </div>
+
+        <!-- Big Code Display Area -->
+        <div class="prompt-code-wrap">
+          <pre class="prompt-pre-text" id="prompt-pre"></pre>
+        </div>
+
+        <!-- Big Fun Action Buttons -->
+        <div class="modal-huge-actions">
+          <button class="btn-big-copy-all" id="btn-modal-copy">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>プロンプトを1-Clickコピー</span>
+          </button>
+
+          <button class="btn-open-gemini-app" id="btn-open-gemini-app">
+            <span>🚀 コピーしてGeminiを開く！</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </button>
+        </div>
+
+        <!-- Model Banner -->
+        <div class="model-info-banner">
+          <div class="model-info-title" id="modal-model-title">推奨Geminiモデル: Gemini 3.8 Flash</div>
+          <div class="model-info-desc" id="modal-model-desc">説明文</div>
+        </div>
+
+        <!-- Tips Banner -->
+        <div class="model-info-banner" style="border-left-color: var(--neon-pink);">
+          <div class="model-info-title" style="color: var(--neon-pink);">💡 成果を最大化する実践Tips</div>
+          <div class="model-info-desc" id="modal-tips-desc">Tips文</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Lock Screen (Authentication Gate) -->
+  <div class="lock-screen-overlay hidden" id="lock-screen">
+    <div class="lock-card">
+      <span class="lock-icon-dice">🔒</span>
+      <h2 class="lock-h2">Gemini Discovery Day</h2>
+      <p style="font-size: 0.95rem; font-weight: 800; color: var(--neon-cyan); margin-bottom: 14px; letter-spacing: 0.04em;">by Google AI学生アンバサダー</p>
+      <p class="lock-subtitle">
+        本サイトはイベント参加者専用の限定特典アーカイブです。<br>
+        会場で案内された合言葉（パスワード）を入力してください。
+      </p>
+
+      <input type="password" id="lock-input" class="lock-input" placeholder="合言葉を入力" autocomplete="off">
+      <div class="lock-err" id="lock-err">合言葉が正しくありません</div>
+
+      <button class="btn-spin-gacha" id="btn-unlock" style="width: 100%; justify-content: center;">
+        <span>会場に入る</span>
+      </button>
+
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 24px;">
+        ※初期合言葉: <strong>discovery2026</strong>
+      </p>
+    </div>
+  </div>
+
+  <!-- Floating Toast Shelf -->
+  <div class="toast-shelf" id="toast-shelf"></div>
+
+  <!-- Scripts -->
+  <script src="prompts-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
